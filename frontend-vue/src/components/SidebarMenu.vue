@@ -1,46 +1,91 @@
 <script setup>
-// import useRouter from vue-router
+// Import useRouter from vue-router
 import { useRouter } from "vue-router";
 
-// initialize router
+// Initialize router
 const router = useRouter();
 
-// import Cookies from js-cookie
+// Import Cookies from js-cookie
 import Cookies from "js-cookie";
 
-// method to handle logout
+// Method to handle logout
 const logout = () => {
-  //remove token and user on cookies
+  // Remove token and user from cookies
   Cookies.remove("token");
   Cookies.remove("user");
 
-  // redirect to login
+  // Redirect to login
   router.push({ name: "login" });
 };
 </script>
 
 <template>
-  <div class="card border-0 rounded shadow-sm">
-    <div class="card-header">MAIN MENU</div>
-    <div class="card-body">
-      <div class="list-group">
+  <div class="sidebar-menu card border-0 rounded shadow-sm">
+    <div class="card-header bg-primary text-white">MAIN MENU</div>
+    <div class="card-body p-0">
+      <div class="list-group list-group-flush">
         <router-link
           :to="{ name: 'dashboard' }"
           class="list-group-item list-group-item-action"
-          >Dashboard</router-link
         >
+          <i class="bi bi-house-door me-2"></i>Dashboard
+        </router-link>
         <router-link
           :to="{ name: 'admin.users.index' }"
           class="list-group-item list-group-item-action"
-          >Users</router-link
         >
+          <i class="bi bi-people me-2"></i>Users
+        </router-link>
         <a
           href="#"
           @click="logout"
           class="list-group-item list-group-item-action"
-          >Logout</a
         >
+          <i class="bi bi-box-arrow-right me-2"></i>Logout
+        </a>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.sidebar-menu {
+  background-color: #343a40;
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 15px;
+}
+
+.sidebar-menu .card-header {
+  background-color: #3b5bdb;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.sidebar-menu .list-group-item {
+  background-color: #343a40;
+  color: #ffffff;
+  border: none;
+}
+
+.sidebar-menu .list-group-item:hover {
+  background-color: #3b5bdb;
+  color: #ffffff;
+}
+
+.sidebar-menu .list-group-item i {
+  font-size: 1.2rem;
+}
+
+.sidebar-menu .list-group-item-action {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .sidebar-menu {
+    min-height: auto;
+    padding: 10px;
+  }
+}
+</style>

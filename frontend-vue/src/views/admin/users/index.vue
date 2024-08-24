@@ -92,13 +92,16 @@ const deleteUser = async (id) => {
                         params: { id: user.id },
                       }"
                       class="btn btn-sm btn-primary rounded-sm shadow border-0 me-2"
-                      >EDIT</router-link
+                      title="Edit User"
                     >
+                      <i class="bi bi-pencil-fill"></i>
+                    </router-link>
                     <button
                       @click="deleteUser(user.id)"
                       class="btn btn-sm btn-danger rounded-sm shadow border-0"
+                      title="Delete User"
                     >
-                      DELETE
+                      <i class="bi bi-trash-fill"></i>
                     </button>
                   </td>
                 </tr>

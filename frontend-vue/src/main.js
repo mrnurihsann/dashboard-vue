@@ -1,5 +1,6 @@
 //import createApp from Vue
 import { createApp } from "vue";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 //import component App
 import App from "./App.vue";
